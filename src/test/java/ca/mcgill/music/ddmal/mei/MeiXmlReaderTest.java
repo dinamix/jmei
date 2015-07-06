@@ -32,11 +32,11 @@ public class MeiXmlReaderTest {
      */
     @Test
     public void testRootElement() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo>bar</foo></mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo>bar</foo></mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
         assertThat(doc.getRootElement().getName(), is("mei"));
 
-        docText = "<meiCorpus xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo>bar</foo></meiCorpus>";
+        docText = "<meiCorpus xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo>bar</foo></meiCorpus>";
         doc = MeiXmlReader.loadDocument(docText);
         assertThat(doc.getRootElement().getName(), is("meiCorpus"));
 
@@ -52,7 +52,7 @@ public class MeiXmlReaderTest {
     @Test
     public void testRootElementNamespace() {
         // Bad namespace
-        String docText = "<mei meiversion=\"2012\"><foo>bar</foo></mei>";
+        String docText = "<mei meiversion=\"2013\"><foo>bar</foo></mei>";
         try {
             MeiXmlReader.loadDocument(docText);
             fail("Should have thrown an exception");
@@ -68,7 +68,7 @@ public class MeiXmlReaderTest {
     public void testNoFile() {
         MeiXmlReader.loadFile("nofile.mei");
     }
-
+    
     /**
      * Open a file that does exist
      * @throws URISyntaxException
@@ -110,7 +110,7 @@ public class MeiXmlReaderTest {
      */
     @Test
     public void testComment() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo>bar<!--woo--></foo></mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo>bar<!--woo--></foo></mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
         MeiElement el = doc.getRootElement().getChildren().get(0).getChildren().get(0);
 
@@ -120,7 +120,7 @@ public class MeiXmlReaderTest {
 
     @Test
     public void testReadValue() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo>bar</foo></mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo>bar</foo></mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
         MeiElement el = doc.getRootElement().getChildren().get(0);
 
@@ -131,7 +131,7 @@ public class MeiXmlReaderTest {
 
     @Test
     public void testReadTail() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo/>bar</mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo/>bar</mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
 
         MeiElement el = doc.getRootElement().getChildren().get(0);
@@ -145,7 +145,7 @@ public class MeiXmlReaderTest {
      */
     @Test
     public void testReadIdAttr() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo xml:id=\"myid\">bar</foo></mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo xml:id=\"myid\">bar</foo></mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
 
         MeiElement el = doc.getRootElement().getChildren().get(0);
@@ -157,7 +157,7 @@ public class MeiXmlReaderTest {
      */
     @Test
     public void testReadAttr() {
-        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2012\"><foo attr=\"baz\">bar</foo></mei>";
+        String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" meiversion=\"2013\"><foo attr=\"baz\">bar</foo></mei>";
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
         MeiElement el = doc.getRootElement().getChildren().get(0);
         assertThat(el.getAttribute("attr"), is("baz"));
@@ -169,7 +169,7 @@ public class MeiXmlReaderTest {
     @Test
     public void testReadAttrNamespace() {
         String docText = "<mei xmlns=\"http://www.music-encoding.org/ns/mei\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
-                "meiversion=\"2012\"><foo xlink:href=\"urn:foo\">bar</foo></mei>";
+                "meiversion=\"2013\"><foo xlink:href=\"urn:foo\">bar</foo></mei>";
 
         MeiDocument doc = MeiXmlReader.loadDocument(docText);
         MeiElement el = doc.getRootElement().getChildren().get(0);

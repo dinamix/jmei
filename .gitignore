@@ -3,3 +3,5 @@
 .settings/*
 target/*
 *.class
+*.DS_Store
+*target*

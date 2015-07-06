@@ -30,7 +30,7 @@ import java.util.List;
  * A Document. It contains a root element, and some helper methods.
  */
 public class MeiDocument {
-    public static final String MEI_VERSION = "2012";
+    public static final String MEI_VERSION = "2013";
 
     private MeiElement rootElement;
 
